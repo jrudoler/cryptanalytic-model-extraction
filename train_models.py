@@ -17,7 +17,7 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
 import numpy as onp
 import jax
-import jax.experimental.optimizers
+import jax.example_libraries.optimizers
 import jax.numpy as jnp
 
 def matmul(a,b,c,np=jnp):
@@ -90,7 +90,7 @@ SAMPLES = 20
 # Again, let's not think. Just optimize with adam.
 # Your cosine cyclic learning rate schedule can have fun elsewhere.
 # We just pick 3e-4 because Karpathy said so.
-init, opt_update, get_params = jax.experimental.optimizers.adam(3e-4)
+init, opt_update, get_params = jax.example_libraries.optimizers.adam(3e-4)
 
 X = onp.random.normal(size=(SAMPLES, sizes[0]))
 Y = onp.array(onp.random.normal(size=SAMPLES)>0,dtype=onp.float32)
@@ -126,4 +126,5 @@ for i in range(100):
         step += 1
         
 # Save our amazing model.
+params = onp.asarray(params, dtype="object")
 onp.save("models/" + str(seed) + "_" + "-".join(map(str,sizes)), params)

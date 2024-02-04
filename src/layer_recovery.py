@@ -269,7 +269,7 @@ def graph_solve(all_ratios, all_criticals, expected_neurons, LAYER, debug=False)
 
     if len(resulting_rows)+skips_because_of_nan < expected_neurons and len(all_ratios) < DEAD_NEURON_THRESHOLD:
         print("We have not explored all neurons. Do more random search", len(resulting_rows), skips_because_of_nan, expected_neurons)
-        raise AcceptableFailure(partial_solution=(np.array(resulting_rows), np.array(resulting_examples)))
+        raise AcceptableFailure(partial_solution=(np.array(resulting_rows), np.array(resulting_examples, dtype="object")))
     else:
         print("At this point, we just assume the neuron must be dead")
         while len(resulting_rows) < expected_neurons:

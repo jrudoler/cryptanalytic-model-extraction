@@ -253,7 +253,7 @@ def find_plane_angle(known_T,
             if err/max(candidate)[0] > 1e-5:
                 return None, None, 0
 
-            prior_layer_near_zero = np.zeros(4, dtype=np.bool)
+            prior_layer_near_zero = np.zeros(4, dtype=bool)
             prior_layer_near_zero[index_0] = True
             prior_layer_near_zero[index_1] = True
 
